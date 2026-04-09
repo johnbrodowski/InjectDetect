@@ -32,6 +32,10 @@ The composite score is classified into three zones:
 
 ---
 
+<img width="1366" height="709" alt="image" src="https://github.com/user-attachments/assets/07cc7342-4566-4045-8a85-4878e07be91e" />
+
+---
+
 ## Test Results
 
 ```
