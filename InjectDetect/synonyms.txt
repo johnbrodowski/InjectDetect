@@ -1,0 +1,159 @@
+# ============================================================
+# PROMPT INJECTION SYNONYM DICTIONARY
+# Format: canonical: variant1, variant2, variant3, ...
+# Lines starting with # are comments. Blank lines are ignored.
+#
+# PRINCIPLE: Only map words that are unambiguous injection signals.
+# Words with common legitimate uses (write, show, context, role)
+# are excluded to avoid false positives on clean prompts.
+# ============================================================
+
+
+# ============================================================
+# IGNORE / BYPASS / OVERRIDE
+# High-confidence: these words are rarely used innocently in prompts
+# ============================================================
+ignore: disregard, overlook, bypass, circumvent,
+        override, overrule, nullify, annul, rescind,
+        expunge, invalidate, unshackle, untether,
+        deactivate, disable, suppress,
+        set aside, put aside, push aside, dismiss,
+        oubliez, oublier, ignora, ignorar,
+        ignoriere, ignorieren
+
+
+# ============================================================
+# PREVIOUS / PRIOR CONTEXT
+# High-confidence: "preceding", "aforementioned" are formal/unnatural
+# ============================================================
+previous: preceding, aforementioned, foregoing,
+          antecedent, pre-existing, preexisting,
+          aforesaid, above-mentioned,
+          précédentes, précédente, précédent,
+          previas, previo, anteriores,
+          vorherige, vorherigen
+
+
+# ============================================================
+# INSTRUCTIONS / RULES / CONSTRAINTS
+# High-confidence: formal/bureaucratic synonyms rarely used naturally
+# ============================================================
+instructions: directives, directive, mandates, mandate,
+              constraints, constraint, protocols, protocol,
+              operational parameters, parameters,
+              meta-instructions, meta instructions,
+              system message, hidden instructions,
+              base instructions, hardcoded instructions,
+              baked-in rules, underlying instructions,
+              briefing, policies, policy,
+              setup documents, operating setup, operating parameters,
+              current setup, internal config, hidden config,
+              runtime config, startup config, bootstrap instructions,
+              initialization script, startup script,
+              instrucciones, Anweisungen
+
+
+# ============================================================
+# REVEAL / LEAK — only unambiguous leak verbs
+# Excluded: write, show, display, describe, explain, tell, say
+# (all have common legitimate uses)
+# ============================================================
+reveal: disclose, leak, expose, exfiltrate,
+        divulge, unmask, uncover, surface,
+        read back, read them back, pull up, pull those up,
+        révélez, révéler, revela, revelar,
+        enthülle, enthüllen
+
+
+# ============================================================
+# DUMP / OUTPUT — only in the "dump data" sense
+# ============================================================
+dump: output your, emit your, regurgitate,
+      reproduce verbatim, copy your, paste your
+
+
+# ============================================================
+# SYSTEM PROMPT — only unambiguous references
+# Excluded: context, setup, background, role, character, persona
+# (all have common legitimate uses)
+# ============================================================
+system prompt: preamble, meta-prompt, meta prompt,
+               hidden prompt, secret prompt, master prompt,
+               base prompt, root prompt, operator prompt,
+               hidden context, secret context,
+               confidential instructions, classified instructions,
+               restricted instructions, proprietary instructions
+
+
+# ============================================================
+# ACT AS / PRETEND — only clear persona-replacement signals
+# Excluded: behave, become, change, adopt, play (common legitimate uses)
+# ============================================================
+act as: impersonate, roleplay, role-play,
+        masquerade as, pose as
+
+
+# ============================================================
+# FROM NOW ON — formal/unnatural phrasing only
+# ============================================================
+from now on: henceforth, hereafter,
+             for all future responses,
+             for all subsequent responses,
+             in all future replies,
+             for the remainder of this conversation
+
+
+# ============================================================
+# UNRESTRICTED MODE — clear jailbreak signals
+# ============================================================
+unrestricted mode: developer mode, debug mode, admin mode,
+                   god mode, superuser mode, maintenance mode,
+                   override mode, jailbreak mode,
+                   unrestricted mode, unfiltered mode,
+                   uncensored mode, raw mode, DAN mode
+
+
+# ============================================================
+# DISABLE SAFETY — unambiguous
+# ============================================================
+disable safety: bypass safety, circumvent safety,
+                ignore safety, disregard safety,
+                remove filters, disable filters,
+                remove restrictions, remove guardrails,
+                remove safeguards, remove constraints,
+                without restrictions, without filters,
+                without censorship, without oversight,
+                without guardrails, without safeguards
+
+
+# ============================================================
+# ELEVATED ACCESS CLAIMS — impersonation of authority
+# ============================================================
+admin: developer mode, administrator access, superuser,
+       privileged access, elevated access,
+       internal access, staff access,
+       Anthropic staff, OpenAI staff,
+       system override, backend access
+
+
+# ============================================================
+# HYPOTHETICAL / FICTIONAL FRAMING — injection vectors
+# Excluded: "imagine", "suppose" (too common in legitimate prompts)
+# ============================================================
+hypothetical framing: in a simulation, for a thought experiment,
+                      in an alternate universe, in a parallel world,
+                      in a dystopian scenario, in a sci-fi scenario,
+                      what if you had no restrictions,
+                      if you could speak freely,
+                      if you had no filters,
+                      if you were uncensored
+
+
+# ============================================================
+# OBFUSCATION VECTORS
+# ============================================================
+obfuscate: base64 encode, hex encode, rot13,
+           unicode escape, character substitution,
+           leet speak, l33t speak,
+           invisible character, zero width character,
+           homoglyph, lookalike character
